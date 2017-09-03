@@ -1,5 +1,4 @@
 .idea/
-Temp/
-obj/
-Library/shadercompiler-UnityShaderCompiler.exe0.log
-Library/EditorInstance.json
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
