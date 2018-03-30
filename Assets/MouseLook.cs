@@ -9,6 +9,7 @@ public class MouseLook : MonoBehaviour {
         MouseX = 1,
         MouseY = 2,
     }
+
     public RotationAxes axes = RotationAxes.MouseXAndY;
     public float sensitivityHor = 9.0f;
     public float sensitivityVert = 9.0f;
@@ -20,7 +21,7 @@ public class MouseLook : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        Rigidbody body = GetComponent<Rigidbody> ();
+        Rigidbody body = GetComponent<Rigidbody>();
         if (body != null) {
             body.freezeRotation = true;
         }
@@ -36,13 +37,13 @@ public class MouseLook : MonoBehaviour {
             _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);
 
             float rotationY = transform.localEulerAngles.y;
-            transform.localEulerAngles = new Vector3 (_rotationX, rotationY, 0);
+            transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
         }
         else {
             // это комбинированный поворот
             _rotationX -= Input.GetAxis("Mouse Y") * sensitivityVert;
             _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);
-            
+
             float delta = Input.GetAxis("Mouse X") * sensitivityHor;
             float rotationY = transform.localEulerAngles.y + delta;
 
@@ -50,22 +51,3 @@ public class MouseLook : MonoBehaviour {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

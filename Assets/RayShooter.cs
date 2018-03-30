@@ -5,6 +5,7 @@ using UnityEngine.Experimental.UIElements;
 
 public class RayShooter : MonoBehaviour {
     private Camera _camera;
+    public int TimeMiss = 1;
 
     // Use this for initialization
     void Start() {
@@ -23,10 +24,16 @@ public class RayShooter : MonoBehaviour {
 
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit)) {
-                    // Испущенный луч заполняет информацией
-                    // переменную, на которую имеется ссылка.
-                    Debug.Log("Hit " + hit.point);
-                    StartCoroutine(SphereIndicator(hit.point));
+                    GameObject hitObject = hit.transform.gameObject;
+
+                    ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
+
+                    if (target != null) {
+                        target.ReactToHit();
+                    }
+                    else {
+                        StartCoroutine(SphereIndicator(hit.point));
+                    }
                 }
             }
         }
@@ -36,7 +43,7 @@ public class RayShooter : MonoBehaviour {
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere.transform.position = pos;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(TimeMiss);
 
         Destroy(sphere);
     }
