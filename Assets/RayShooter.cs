@@ -18,22 +18,20 @@ public class RayShooter : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            if (_camera != null) {
-                Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
-                Ray ray = _camera.ScreenPointToRay(point); // Создание в этой точке луча методом ScreenPointToRay()
+            Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
+            Ray ray = _camera.ScreenPointToRay(point); // Создание в этой точке луча методом ScreenPointToRay()
 
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit)) {
-                    GameObject hitObject = hit.transform.gameObject;
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)) {
+                GameObject hitObject = hit.transform.gameObject;
 
-                    ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
+                ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
 
-                    if (target != null) {
-                        target.ReactToHit();
-                    }
-                    else {
-                        StartCoroutine(SphereIndicator(hit.point));
-                    }
+                if (target != null) {
+                    target.ReactToHit();
+                }
+                else {
+                    StartCoroutine(SphereIndicator(hit.point));
                 }
             }
         }
