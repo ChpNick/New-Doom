@@ -52,8 +52,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Fireball.cs" />
     <Compile Include="Assets\Script\FPSInput.cs" />
     <Compile Include="Assets\Script\MouseLook.cs" />
+    <Compile Include="Assets\Script\PlayerCharacter.cs" />
     <Compile Include="Assets\Script\RayShooter.cs" />
     <Compile Include="Assets\Script\ReactiveTarget.cs" />
     <Compile Include="Assets\Script\SceneController.cs" />
