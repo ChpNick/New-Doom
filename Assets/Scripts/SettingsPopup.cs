@@ -7,7 +7,8 @@ public class SettingsPopup : MonoBehaviour {
     [SerializeField] private Slider speedSlider;
 
     void Start() {
-        speedSlider.value = PlayerPrefs.GetFloat("speed", 1);
+        Close();
+        speedSlider.value = PlayerPrefs.GetFloat("Speed", 1);
     }
 
     public void Open() {
@@ -17,6 +18,7 @@ public class SettingsPopup : MonoBehaviour {
 
     public void Close() {
 //        Деактивируйте объект, чтобы закрыть окно.
+        Debug.Log("Close");
         gameObject.SetActive(false);
     }
 
@@ -28,6 +30,6 @@ public class SettingsPopup : MonoBehaviour {
 //    Этот метод срабатывает при изменении положения ползунка.
     public void OnSpeedValue(float speed) {
         Debug.Log("Speed: " + speed);
-        PlayerPrefs.SetFloat("speed", speed);
+        PlayerPrefs.SetFloat("Speed", speed);
     }
 }

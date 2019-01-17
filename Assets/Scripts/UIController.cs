@@ -4,15 +4,13 @@ using UnityEngine;
 using UnityEngine.UI; // Импорт инфраструктуры для работы с кодом UI.
 
 public class UIController : MonoBehaviour {
-
     // Объект сцены Reference Text, предназначенный для задания свойства text.
     [SerializeField] private Text scoreLabel;
     [SerializeField] private SettingsPopup settingsPopup;
-    
+
     void Start() {
 //        Закрываем всплывающее окно в момент начала игры.
-        settingsPopup.Close();
-        
+//        settingsPopup.Close();
     }
 
     // Update is called once per frame
@@ -24,9 +22,9 @@ public class UIController : MonoBehaviour {
         // Метод, вызываемый кнопкой настроек.
         Debug.Log("open settings");
 //        Заменяем отладочный текст методом всплывающего окна.
-        settingsPopup.Open(); 
+        settingsPopup.Open();
     }
-    
+
     public void OnPointerDown() {
         Debug.Log("pointer down");
     }
