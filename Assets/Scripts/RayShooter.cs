@@ -31,6 +31,7 @@ public class RayShooter : MonoBehaviour {
 
                 if (target != null) {
                     target.ReactToHit();
+                    Messenger.Broadcast(GameEvent.ENEMY_HIT); // это надо перенести в ReactToHit мне кажется
                 }
                 else {
                     StartCoroutine(SphereIndicator(hit.point));

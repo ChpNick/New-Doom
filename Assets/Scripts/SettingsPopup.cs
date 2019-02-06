@@ -29,7 +29,10 @@ public class SettingsPopup : MonoBehaviour {
 
 //    Этот метод срабатывает при изменении положения ползунка.
     public void OnSpeedValue(float speed) {
-        Debug.Log("Speed: " + speed);
+        Debug.Log("Speed UP: " + speed);
         PlayerPrefs.SetFloat("Speed", speed);
+
+        Messenger<float>.Broadcast(GameEvent.SPEED_CHANGED, speed);
+        
     }
 }
